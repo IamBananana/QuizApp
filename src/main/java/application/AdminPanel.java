@@ -72,7 +72,7 @@ public class AdminPanel extends Application {
         VBox layout = new VBox(20, titleLabel, gridPane, buttonBox, importExportBox, new Label("Saved Questions:"), questionListView);
         layout.setStyle("-fx-padding: 20px; -fx-alignment: center;");
 
-        applySlideInEffect(layout);
+        slideInEffect(layout);
         Scene scene = new Scene(layout, 450, 550);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
@@ -187,10 +187,10 @@ public class AdminPanel extends Application {
             new Alert(Alert.AlertType.INFORMATION, "Questions Exported Successfully!").show();
         }
     }
-    private void applySlideInEffect(VBox layout) {
-        layout.setTranslateX(-400); // Start off-screen
+    private void slideInEffect(VBox layout) {
+        layout.setTranslateX(-400);
         TranslateTransition slideIn = new TranslateTransition(Duration.seconds(0.7), layout);
-        slideIn.setToX(0); // Move to normal position
+        slideIn.setToX(0);
         slideIn.play();
     }
 

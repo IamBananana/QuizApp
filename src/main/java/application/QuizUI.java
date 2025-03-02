@@ -18,6 +18,7 @@ import javafx.animation.ScaleTransition;
 import javafx.scene.text.Text;
 
 import java.util.List;
+import java.util.Objects;
 
 public class QuizUI extends Application {
     private int currentQuestionIndex = 0;
@@ -25,12 +26,12 @@ public class QuizUI extends Application {
     private String username;
     private List<Question> questions;
 
-    private Label questionLabel = new Label();
-    private Label progressLabel = new Label();
-    private ProgressBar progressBar = new ProgressBar(0);
-    private ToggleGroup answerGroup = new ToggleGroup();
-    private VBox optionsBox = new VBox();
-    private Button nextButton = new Button("Next");
+    private final Label questionLabel = new Label();
+    private final Label progressLabel = new Label();
+    private final ProgressBar progressBar = new ProgressBar(0);
+    private final ToggleGroup answerGroup = new ToggleGroup();
+    private final VBox optionsBox = new VBox();
+    private final Button nextButton = new Button("Next");
 
     @Override
     public void start(Stage primaryStage) {
@@ -46,7 +47,6 @@ public class QuizUI extends Application {
         dialog.setContentText("Name:");
         dialog.showAndWait().ifPresent(name -> username = name);
 
-        // Styling
         questionLabel.getStyleClass().add("question-label");
         nextButton.getStyleClass().add("next-button");
 
@@ -54,14 +54,14 @@ public class QuizUI extends Application {
         progressBox.setSpacing(10);
         progressBox.setAlignment(Pos.CENTER);
 
-        VBox vBox = new VBox(questionLabel, progressBox, optionsBox, nextButton);
-        vBox.setSpacing(15);
-        vBox.setPadding(new Insets(20));
-        vBox.setAlignment(Pos.CENTER);
+        VBox vBucks = new VBox(questionLabel, progressBox, optionsBox, nextButton);
+        vBucks.setSpacing(15);
+        vBucks.setPadding(new Insets(20));
+        vBucks.setAlignment(Pos.CENTER);
 
 
-        Scene scene = new Scene(vBox, 400, 350);
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        Scene scene = new Scene(vBucks, 400, 350);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Quiz");

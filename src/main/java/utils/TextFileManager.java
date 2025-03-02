@@ -1,5 +1,6 @@
 package utils;
 
+import exceptions.InvalidQuestionFormatException;
 import models.Question;
 import java.io.*;
 import java.util.ArrayList;
@@ -31,8 +32,9 @@ public class TextFileManager {
                     importedQuestions.add(new Question(questionText, choices, correctIndex));
                 }
             }
-        } catch (IOException | NumberFormatException e) {
+        } catch (IOException | NumberFormatException | InvalidQuestionFormatException e) {
             e.printStackTrace();
+            System.out.println("Error importing questions. TextFileManager.importQuestions");
         }
         return importedQuestions;
     }
